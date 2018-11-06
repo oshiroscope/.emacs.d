@@ -4,14 +4,8 @@
 ;;; 環境ごとの初期設定
 
 ;; https://qiita.com/j8takagi/items/504ccb86921695bdec13
+
 ;; windows setting
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
 (when (equal system-type 'windows-nt)
   ;; set default directory: HOME
   ;; https://qiita.com/t2psyto/items/05776f010792ba967152
@@ -56,22 +50,15 @@
 ;; linux setting
 (when (equal system-type 'gnu/linux))
 
+;;; 共通の初期設定
 
-;; ;; magit 
-;; ;; https://qiita.com/ignorant/items/86d353e3ada299f12836
-;; (use-package magit
-;;   :ensure t
-;;   :defer t
-;;   :init
-;;   (when (eq system-type 'windows-nt)
-;;     (setq magit-git-executable "D:/Programs/Git/bin/git.exe"))
-;;   :bind ("C-x g" . magit-status)
-;;   :config
-;;   (setq magit-refs-show-commit-count 'all
-;;         magit-log-buffer-file-locked t
-;;         magit-revision-show-gravatars nil
-;;         magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-;;   )
+;; color theme
+;; https://aoe-tk.hatenablog.com/entry/20130210/1360506829
+(load-theme 'deeper-blue t)
+
+;; 背景の透過
+;; https://sakashushu.blog.so-net.ne.jp/2014-04-27
+(set-frame-parameter nil 'alpha 90)
 
 ;; el-getの使い方
 ;; https://masutaka.net/chalow/2015-06-17-1.html
@@ -84,10 +71,13 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+;; (el-get 'sync)
+;; ↑初期化処理をel-get-bundleで書いていくタイプの人間は削除するらしい
+;; http://semper-fi.hatenablog.com/entry/2016/07/18/161957
 
 ;; bind-key
 ;; http://emacs.rubikitch.com/bind-key/
-(el-get-bundle bind-key)
+(el-get-bundle elpa:bind-key)
 
 ;; magit
 ;; https://qiita.com/ignorant/items/86d353e3ada299f12836
@@ -96,16 +86,31 @@
 
 ;; auto-complete
 (el-get-bundle auto-complete)  
-	     
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (bind-key))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+;; tramp
+;; https://qiita.com/Tats_U_/items/cb7ee924541a58c66946
+(when (equal system-type 'gnu/linux)
+  (setq tramp-default-method "ssh"))
+(when (equal system-type 'windows-nt)
+  (setq tramp-default-method "plink"))
+
+;; ssh-mode 
+(el-get-bundle ssh)
+;; ssh-modeでのファイルパス補完の有効化
+;; https://qiita.com/fujimotok/items/86c665fba6fdcf62aeca
+(when (equal system-type 'windows-nt)
+  ;; ssh-modeでplink使うよう設定
+  (setq ssh-program "/c/Program Files/PuTTY/plink")
+  ;; ファイルパスの補完有効化
+  (add-hook 'ssh-mode-hook
+            (lambda ()
+              (setq ssh-directory-tracking-mode t)
+              (shell-dirtrack-mode t)
+              (setq dirtrackp nil))))
+
+;; package selected package 
+;; http://extra-vision.blogspot.com/2016/10/emacs25-package-selected-packages.html
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
+
