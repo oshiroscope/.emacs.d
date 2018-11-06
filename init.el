@@ -104,15 +104,17 @@
 (el-get-bundle ssh)
 ;; ssh-modeでのファイルパス補完の有効化
 ;; https://qiita.com/fujimotok/items/86c665fba6fdcf62aeca
+
+;; ssh-modeでplink使うよう設定
 (when (equal system-type 'windows-nt)
-  ;; ssh-modeでplink使うよう設定
-  (setq ssh-program "/c/Program Files/PuTTY/plink")
-  ;; ファイルパスの補完有効化
-  (add-hook 'ssh-mode-hook
-            (lambda ()
-              (setq ssh-directory-tracking-mode t)
-              (shell-dirtrack-mode t)
-              (setq dirtrackp nil))))
+  (setq ssh-program "/c/Program Files/PuTTY/plink"))
+
+;; ファイルパスの補完有効化
+(add-hook 'ssh-mode-hook
+          (lambda ()
+            (setq ssh-directory-tracking-mode t)
+            (shell-dirtrack-mode t)
+            (setq dirtrackp nil)))
 
 ;; undo-tree
 ;; https://www.emacswiki.org/emacs/UndoTree
