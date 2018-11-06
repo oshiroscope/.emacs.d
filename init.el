@@ -114,6 +114,9 @@
               (shell-dirtrack-mode t)
               (setq dirtrackp nil))))
 
+;; undo-tree
+;; https://www.emacswiki.org/emacs/UndoTree
+(el-get-bundle undo-tree)
 
 ;;; cache directory
 
