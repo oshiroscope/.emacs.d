@@ -107,7 +107,8 @@
 
 ;; ssh-modeでplink使うよう設定
 (when (equal system-type 'windows-nt)
-  (setq ssh-program "/c/Program Files/PuTTY/plink"))
+  ;;(setq ssh-program "/c/Program Files/PuTTY/plink.exe"))
+  (setq ssh-program "plink"))
 
 ;; ファイルパスの補完有効化
 (add-hook 'ssh-mode-hook
