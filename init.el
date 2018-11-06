@@ -56,9 +56,13 @@
 ;; https://aoe-tk.hatenablog.com/entry/20130210/1360506829
 (load-theme 'deeper-blue t)
 
+
+
 ;; 背景の透過
 ;; https://sakashushu.blog.so-net.ne.jp/2014-04-27
 (set-frame-parameter nil 'alpha 90)
+
+;;; パッケージ管理
 
 ;; el-getの使い方
 ;; https://masutaka.net/chalow/2015-06-17-1.html
@@ -70,10 +74,12 @@
       (url-retrieve-synchronously "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
     (goto-char (point-max))
     (eval-print-last-sexp)))
-(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+(add-to-list 'el-get-recipe-path (locate-user-emacs-file "el-get-user/recipes"))
 ;; (el-get 'sync)
 ;; ↑初期化処理をel-get-bundleで書いていくタイプの人間は削除するらしい
 ;; http://semper-fi.hatenablog.com/entry/2016/07/18/161957
+
+;;; パッケージ
 
 ;; bind-key
 ;; http://emacs.rubikitch.com/bind-key/
@@ -94,7 +100,7 @@
 (when (equal system-type 'windows-nt)
   (setq tramp-default-method "plink"))
 
-;; ssh-mode 
+;; ssh
 (el-get-bundle ssh)
 ;; ssh-modeでのファイルパス補完の有効化
 ;; https://qiita.com/fujimotok/items/86c665fba6fdcf62aeca
@@ -108,7 +114,28 @@
               (shell-dirtrack-mode t)
               (setq dirtrackp nil))))
 
-;; package selected package 
+
+;;; cache directory
+
+;; http://d.hatena.ne.jp/sandai/20120309/p1
+;; https://qiita.com/ShingoFukuyama/items/19b02cd1679a6ea0bfdb
+
+;; auto-complete
+(setq ac-comphist-file (locate-user-emacs-file "cache/auto-complete/ac-comphist.dat"))
+
+;; auto-save-list
+(setq auto-save-list-file-prefix (locate-user-emacs-file "cache/auto-save-list/.saves-"))
+
+;; nsm data
+;; https://ayatakesi.github.io/emacs/25.1/Network-Security.html
+(setq nsm-settings-file (locate-user-emacs-file "cache/network-security.data"))
+
+;; tramp
+(setq tramp-persistency-file-name (locate-user-emacs-file "cache/tramp"))
+
+
+;;;  package selected package 
+
 ;; http://extra-vision.blogspot.com/2016/10/emacs25-package-selected-packages.html
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
