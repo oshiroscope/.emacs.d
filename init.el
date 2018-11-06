@@ -50,17 +50,17 @@
 ;; linux setting
 (when (equal system-type 'gnu/linux))
 
+
 ;;; 共通の初期設定
 
 ;; color theme
 ;; https://aoe-tk.hatenablog.com/entry/20130210/1360506829
 (load-theme 'deeper-blue t)
 
-
-
 ;; 背景の透過
 ;; https://sakashushu.blog.so-net.ne.jp/2014-04-27
 (set-frame-parameter nil 'alpha 90)
+
 
 ;;; パッケージ管理
 
