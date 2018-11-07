@@ -20,8 +20,8 @@
   (setq w32-ime-mode-line-state-indicator-list '("[--]" "[あ]" "[--]"))
   (w32-ime-initialize)
   ;; 日本語入力時にカーソルの色を変える設定
-  (add-hook 'w32-ime-on-hook '(lambda () (set-cursor-color "coral4")))
-  (add-hook 'w32-ime-off-hook '(lambda () (set-cursor-color "black")))
+  ;; (add-hook 'w32-ime-on-hook '(lambda () (set-cursor-color "coral4")))
+  ;; (add-hook 'w32-ime-off-hook '(lambda () (set-cursor-color "black")))
 
   ;; ミニバッファに移動した際は最初に日本語入力が無効な状態にする
   (add-hook 'minibuffer-setup-hook 'deactivate-input-method)
@@ -56,6 +56,9 @@
 ;; color theme
 ;; https://aoe-tk.hatenablog.com/entry/20130210/1360506829
 (load-theme 'deeper-blue t)
+
+;; 特定の色が見にくい場合
+;; https://qiita.com/AnchorBlues/items/91026c4f1c0745f5b851
 
 ;; 背景の透過
 ;; https://sakashushu.blog.so-net.ne.jp/2014-04-27
@@ -123,6 +126,13 @@
 ;; undo-tree
 ;; https://www.emacswiki.org/emacs/UndoTree
 (el-get-bundle undo-tree)
+
+
+;; madhat2r-theme
+;; register el-get directory as custom color-theme
+;; (add-to-list 'custom-theme-load-path (locate-user-emacs-file "el-get/madhat2r-theme"))
+;; (el-get-bundle madhat2r-theme)
+;; (load-theme 'madhat2r t)
 
 ;;; cache directory
 
