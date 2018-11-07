@@ -1,10 +1,12 @@
 # cache file
 /cache
 /server
+custom.el
 
 # packages
 /elpa
 /el-get
+
 
 
 # Created by https://www.gitignore.io/api/emacs
