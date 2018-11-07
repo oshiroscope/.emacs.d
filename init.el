@@ -93,6 +93,9 @@
 ;; auto-complete
 (el-get-bundle auto-complete)  
 
+;; Windowの場合はPuTTYをインストールする
+;; https://www.putty.org/
+
 ;; tramp
 ;; https://qiita.com/Tats_U_/items/cb7ee924541a58c66946
 (when (equal system-type 'gnu/linux)
