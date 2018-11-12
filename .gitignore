@@ -2,6 +2,7 @@
 /cache
 /server
 custom.el
+network-security.data
 
 # packages
 /elpa
