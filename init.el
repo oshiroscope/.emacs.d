@@ -6,6 +6,13 @@
 ;; https://qiita.com/j8takagi/items/504ccb86921695bdec13
 
 ;; windows setting
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (when (equal system-type 'windows-nt)
   ;; set default directory: HOME
   ;; https://qiita.com/t2psyto/items/05776f010792ba967152
@@ -90,6 +97,9 @@
 
 ;; magit
 ;; https://qiita.com/ignorant/items/86d353e3ada299f12836
+;; Linuxの場合はtexinfoをインストールしておく必要がある
+;; https://github.com/dimitri/el-get/issues/2251
+;; sudo apt-get install texinfo
 (el-get-bundle magit)
 (bind-key "C-x g" 'magit-status)
 
