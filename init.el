@@ -60,6 +60,10 @@
 
 ;;; 共通の初期設定
 
+;; 日本語の文字コード設定
+;; http://yohshiy.blog.fc2.com/blog-entry-273.html
+(prefer-coding-system 'utf-8)
+
 ;; color theme
 ;; https://aoe-tk.hatenablog.com/entry/20130210/1360506829
 (load-theme 'deeper-blue t)
@@ -104,7 +108,16 @@
 (bind-key "C-x g" 'magit-status)
 
 ;; auto-complete
+;; http://keisanbutsuriya.hateblo.jp/entry/2015/02/08/175005
 (el-get-bundle auto-complete)  
+(ac-config-default)
+(add-to-list 'ac-modes 'text-mode)         ;; text-modeでも自動的に有効にする
+(add-to-list 'ac-modes 'fundamental-mode)  ;; fundamental-mode
+(add-to-list 'ac-modes 'org-mode)
+(add-to-list 'ac-modes 'latex-mode)
+(ac-set-trigger-key "TAB")
+(setq ac-use-menu-map t)       ;; 補完メニュー表示時にC-n/C-pで補完候補選択
+(setq ac-use-fuzzy t)          ;; 曖昧マッチ 
 
 ;; Windowの場合はPuTTYをインストールする
 ;; https://www.putty.org/
