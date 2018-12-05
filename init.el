@@ -7,12 +7,6 @@
 
 ;; windows setting
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
 (when (equal system-type 'windows-nt)
   ;; set default directory: HOME
   ;; https://qiita.com/t2psyto/items/05776f010792ba967152
@@ -150,12 +144,24 @@
 ;; https://www.emacswiki.org/emacs/UndoTree
 (el-get-bundle undo-tree)
 
+;; nyan-mode
+;; https://github.com/TeMPOraL/nyan-mode
+(el-get-bundle nyan-mode)
+(nyan-mode 1)
+
+;; helm
+;; https://qiita.com/jabberwocky0139/items/86df1d3108e147c69e2c
+(el-get-bundle helm)
+(require 'helm-config)
+(helm-mode 1)
 
 ;; madhat2r-theme
 ;; register el-get directory as custom color-theme
 ;; (add-to-list 'custom-theme-load-path (locate-user-emacs-file "el-get/madhat2r-theme"))
 ;; (el-get-bundle madhat2r-theme)
 ;; (load-theme 'madhat2r t)
+
+
 
 ;;; cache directory
 
