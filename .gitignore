@@ -4,6 +4,7 @@
 /url
 custom.el
 network-security.data
+ac-comphist.dat
 
 # packages
 /elpa
