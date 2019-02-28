@@ -1,6 +1,7 @@
 # cache file
 /cache
 /server
+/url
 custom.el
 network-security.data
 

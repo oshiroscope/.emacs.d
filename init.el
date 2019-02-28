@@ -60,15 +60,14 @@
 
 ;; color theme
 ;; https://aoe-tk.hatenablog.com/entry/20130210/1360506829
-(load-theme 'deeper-blue t)
+(load-theme 'misterioso t)
 
 ;; 特定の色が見にくい場合
 ;; https://qiita.com/AnchorBlues/items/91026c4f1c0745f5b851
 
 ;; 背景の透過
 ;; https://sakashushu.blog.so-net.ne.jp/2014-04-27
-(set-frame-parameter nil 'alpha 90)
-
+(set-frame-parameter nil 'alpha 100)
 
 ;;; パッケージ管理
 
@@ -91,7 +90,7 @@
 
 ;; bind-key
 ;; http://emacs.rubikitch.com/bind-key/
-(el-get-bundle elpa:bind-key)
+(el-get-bundle bind-key)
 
 ;; magit
 ;; https://qiita.com/ignorant/items/86d353e3ada299f12836
