@@ -1,5 +1,7 @@
 ;; init.elをreloadする方法
 ;; http://moonstruckdrops.github.io/blog/2014/11/09/reload-config-emacs/
+;; M-x eval-buffer
+
 
 ;;; 環境ごとの初期設定
 
@@ -52,6 +54,7 @@
 (when (equal system-type 'gnu/linux))
 
 
+
 ;;; 共通の初期設定
 
 ;; 日本語の文字コード設定
@@ -68,6 +71,13 @@
 ;; 背景の透過
 ;; https://sakashushu.blog.so-net.ne.jp/2014-04-27
 (set-frame-parameter nil 'alpha 100)
+
+;; 文字サイズの設定
+;; https://qiita.com/suuungwoo/items/46fb78c3ab7904a30905
+;; https://qiita.com/melito/items/238bdf72237290bc6e42
+(add-to-list 'default-frame-alist
+             '(font . "DejaVu Sans Mono-12"))
+(set-face-attribute 'default nil :height 150)
 
 ;;; パッケージ管理
 
